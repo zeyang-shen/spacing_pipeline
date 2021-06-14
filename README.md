@@ -7,7 +7,7 @@ The scripts provided in this repository are used to compute and characterize the
 Here is the overview of the method:
 
 <p align="center">
-<img src="https://github.com/zeyang-shen/spacing_pipeline/main/ENCODE_processing_pipeline.png" width="900" height="280">
+<img src="https://github.com/zeyang-shen/spacing_pipeline/blob/main/ENCODE_processing_pipeline.png" width="900" height="180">
 </p>
 
 ## Dependencies
@@ -31,7 +31,7 @@ If you enconter a problem when using the scripts, you can
 2. or email Zeyang Shen by zes017@ucsd.edu
 
 ## License
-[This project is licensed under GNU GPL v3](https://github.com/zeyang-shen/spacing_pipeline/main/LICENSE)
+[This project is licensed under GNU GPL v3](https://github.com/zeyang-shen/spacing_pipeline/blob/main/LICENSE)
 
 ## Contributors
 The scripts were developed primarily by Zeyang Shen and Rick Zhenzhi Li. Supervision for the project was provided by Christopher K. Glass. 
