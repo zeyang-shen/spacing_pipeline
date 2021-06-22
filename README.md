@@ -7,7 +7,7 @@ The scripts provided in this repository are used to compute and characterize the
 Here is the overview of the method:
 
 <p align="center">
-<img src="https://github.com/zeyang-shen/spacing_pipeline/blob/main/ENCODE_processing_pipeline.png" width="900" height="180">
+<img src="https://github.com/zeyang-shen/spacing_pipeline/blob/main/ENCODE_processing_pipeline.png" width="850" height="180">
 </p>
 
 ## Dependencies
@@ -20,10 +20,18 @@ Here is the overview of the method:
 * Seaborn 0.11.0 ([https://seaborn.pydata.org/installing.html](https://seaborn.pydata.org/installing.html))
 
 ## Quick Usage
-(coming soon)
+[identify_motif.py](https://github.com/zeyang-shen/spacing_pipeline/blob/main/scripts/identify_motif.py) can find motifs given a peak file, a FASTA file for peak sequences, and a motif file. The recommended parameters are as below to filter for motifs passing a false positive rate <0.1% (--cutoff) and a location <50 bp from peak centers (-d 50): 
+```bash
+python identify_motif.py ../ENCODE_processed_files/CTCF_idr.fa CTCF --motif_path ../motifs/ --cutoff -d 50
+```
+
+[characterize_spacing.py](https://github.com/zeyang-shen/spacing_pipeline/blob/main/scripts/characterize_spacing.py) can take in two processed files from identify_motif.py for a pair of transcription factors and output results of spacing relationships. The basic usage is as below:
+```bash
+python characterize_spacing.py ../ENCODE_processed_files/ GATA1 TAL1 --motif_path ../motifs/
+```
 
 ## Citation
-If you use our findings or codes, please cite...(coming soon)
+If you use our findings or scripts, please cite our [biorxiv](https://doi.org/10.1101/2020.04.02.021535) paper.
 
 ## Contact
 If you enconter a problem when using the scripts, you can
