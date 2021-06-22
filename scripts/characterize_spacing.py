@@ -159,7 +159,7 @@ def pval(item):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Compute spacing between motifs; Example: python merge_peak.py ../ENCODE_processed_files/ GATA1 TAL1 --motif_path ../motifs/')
+    parser = argparse.ArgumentParser(description='Compute spacing between motifs; Example: python characterize_spacing.py ../ENCODE_processed_files/ GATA1 TAL1 --motif_path ../motifs/')
     parser.add_argument("path",
                         help="path to the folder of files from script identify_motif.py",
                         type=str)
@@ -179,7 +179,7 @@ if __name__ == "__main__":
     path = args.path
     motif_path = args.motif_path
     
-    original_command = " ".join(["python merge_peak.py", path, tf1, tf2, "--motif_path "+motif_path])
+    original_command = " ".join(["python characterize_spacing.py", path, tf1, tf2, "--motif_path "+motif_path])
     
     #load motif PWMs
     motif_dict = load_motifs(motif_dir=motif_path)

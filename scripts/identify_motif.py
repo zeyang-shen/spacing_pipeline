@@ -179,7 +179,7 @@ def filter_to_df(peak_file, seq_dict, bio_motif, size):
     
 if __name__ == "__main__":
         
-    parser = argparse.ArgumentParser(description='Scan for motifs; Example: python scan_motif.py ../ENCODE_processed_files/CTCF_idr.fa CTCF --motif_path ../motifs/ --cutoff -d 50')
+    parser = argparse.ArgumentParser(description='Scan for motifs; Example: python identify_motif.py ../ENCODE_processed_files/CTCF_idr.fa CTCF --motif_path ../motifs/ --cutoff -d 50')
     parser.add_argument("file", 
                         help="input file of sequences in FASTA format",
                         type=str)
@@ -211,7 +211,7 @@ if __name__ == "__main__":
     score_cutoff = args.cutoff
     scale_size = args.size
     
-    original_command = " ".join(["python scan_motif.py", fasta_file, tf, "--motif_path "+motif_path, 
+    original_command = " ".join(["python identify_motif.py", fasta_file, tf, "--motif_path "+motif_path, 
                                  "--distance "+str(position_cutoff), "--best"*keep_best, "--cutoff"*score_cutoff, 
                                  "--size "+str(scale_size)])
     
