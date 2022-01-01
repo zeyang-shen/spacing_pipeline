@@ -1,4 +1,4 @@
-#PeakID(python scan_motif.py ./ENCODE_processed_files/CEBPG_idr.fa CEBPG --motif_path ./motifs/ --distance 50  --cutoff --size 400)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
+#PeakID(python identify_motif.py ./ENCODE_processed_files/CEBPG_idr.fa CEBPG --motif_path ./motifs/ --distance 50  --cutoff --size 400 --repeat ../hg38_repeats/hg38_repeats_merged.nodup.all.txt)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
 582_1	chrM	12078	12478	+	1000	1345.0	[5.465889, 6.002267]	[92, 147]	[]	[]	[12259, 12314]	[]
 582_100	chr16	76194	76594	+	1000	322.0	[15.210169]	[102]	[15.617505]	[101]	[76395]	[76394]
 582_1000	chr16	33064516	33064916	+	1000	143.5	[6.095848]	[114]	[]	[]	[33064721]	[]

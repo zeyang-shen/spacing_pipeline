@@ -1,4 +1,4 @@
-#PeakID(python scan_motif.py ./ENCODE_processed_files/JUND_idr.fa JUND --motif_path ./motifs/ --distance 50  --cutoff --size 400)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
+#PeakID(python identify_motif.py ./ENCODE_processed_files/JUND_idr.fa JUND --motif_path ./motifs/ --distance 50  --cutoff --size 400 --repeat ../hg38_repeats/hg38_repeats_merged.nodup.all.txt)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
 658_0	chrM	-85	315	+	1000	788.0	[7.2844954]	[136]	[]	[]	[141]	[]
 658_10	chr8	630886	631286	+	1000	693.0	[13.223235, 10.535975]	[87, 126]	[10.826309, 9.107981, 7.2844954]	[87, 126, 155]	[631063, 631102]	[631063, 631102, 631131]
 658_100	chr2	43293810	43294210	+	1000	564.0	[12.337575, 12.340323]	[67, 137]	[9.608511, 13.200696]	[67, 137]	[43293975, 43294045]	[43293975, 43294045]

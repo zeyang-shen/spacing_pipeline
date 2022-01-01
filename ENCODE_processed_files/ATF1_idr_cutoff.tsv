@@ -1,4 +1,4 @@
-#PeakID(python scan_motif.py ./ENCODE_processed_files/ATF1_idr.fa ATF1 --motif_path ./motifs/ --distance 50  --cutoff --size 400)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
+#PeakID(python identify_motif.py ./ENCODE_processed_files/ATF1_idr.fa ATF1 --motif_path ./motifs/ --distance 50  --cutoff --size 400 --repeat ../hg38_repeats/hg38_repeats_merged.nodup.all.txt)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
 755_10	chrM	4746	5146	+	1000	622.0	[]	[]	[8.745255]	[74]	[]	[4918]
 755_100	chr10	84139307	84139707	+	1000	321.0	[8.745255]	[76]	[9.08557]	[94]	[84139482]	[84139500]
 755_10002	chr22	19429440	19429840	+	1000	31.0	[]	[]	[8.028987]	[174]	[]	[19429683]

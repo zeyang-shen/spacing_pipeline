@@ -1,4 +1,4 @@
-#PeakID(python scan_motif.py ./ENCODE_processed_files/MAFK_idr.fa MAFK --motif_path ./motifs/ --distance 50  --cutoff --size 400)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
+#PeakID(python identify_motif.py ./ENCODE_processed_files/MAFK_idr.fa MAFK --motif_path ./motifs/ --distance 50  --cutoff --size 400 --repeat ../hg38_repeats/hg38_repeats_merged.nodup.all.txt)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
 420_10	chr11	6568462	6568862	+	1000	730.0	[11.476549, 11.476549]	[80, 113]	[11.476549, 11.476549]	[73, 106]	[6568642, 6568675]	[6568635, 6568668]
 420_100	chr6	39206309	39206709	+	1000	559.0	[8.216044]	[97]	[11.476549]	[90]	[39206503]	[39206496]
 420_1000	chr3	195824109	195824509	+	1000	303.0	[8.216044]	[113]	[11.476549]	[106]	[195824318]	[195824311]

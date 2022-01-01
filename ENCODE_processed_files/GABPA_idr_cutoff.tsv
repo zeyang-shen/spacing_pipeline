@@ -1,4 +1,4 @@
-#PeakID(python scan_motif.py ./ENCODE_processed_files/GABPA_idr.fa GABPA --motif_path ./motifs/ --distance 50  --cutoff --size 400)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
+#PeakID(python identify_motif.py ./ENCODE_processed_files/GABPA_idr.fa GABPA --motif_path ./motifs/ --distance 50  --cutoff --size 400 --repeat ../hg38_repeats/hg38_repeats_merged.nodup.all.txt)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
 0_0	chr11	2400300	2400700	+	1000	874.0	[13.397782, 8.162848]	[102, 119]	[]	[]	[2400493, 2400510]	[]
 0_1	chr11	47408248	47408648	+	1000	854.0	[]	[]	[10.101244]	[59]	[]	[47408407]
 0_100	chr12	105236065	105236465	+	1000	782.0	[]	[]	[13.315012, 10.381482]	[78, 108]	[]	[105236238, 105236268]

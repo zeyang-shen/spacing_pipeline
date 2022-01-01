@@ -1,4 +1,4 @@
-#PeakID(python scan_motif.py ./ENCODE_processed_files/SREBF2_idr.fa SREBF2 --motif_path ./motifs/ --distance 50  --cutoff --size 400)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
+#PeakID(python identify_motif.py ./ENCODE_processed_files/SREBF2_idr.fa SREBF2 --motif_path ./motifs/ --distance 50  --cutoff --size 400 --repeat ../hg38_repeats/hg38_repeats_merged.nodup.all.txt)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
 99_10009	chr22	22153024	22153424	+	1000	45.0	[5.374046]	[203]	[7.9399495]	[203]	[22153270]	[22153270]
 99_10015	chr22	22843347	22843747	+	1000	45.0	[7.4101677]	[70]	[8.181284]	[70]	[22843503]	[22843503]
 99_10020	chr22	41946185	41946585	+	1000	45.0	[]	[]	[5.2188683]	[108]	[]	[41946381]

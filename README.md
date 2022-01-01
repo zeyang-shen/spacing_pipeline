@@ -7,7 +7,7 @@ The scripts provided in this repository are used to compute and characterize the
 Here is the overview of the method:
 
 <p align="center">
-<img src="https://github.com/zeyang-shen/spacing_pipeline/blob/main/ENCODE_processing_pipeline.png" width="850" height="180">
+<img src="https://github.com/zeyang-shen/spacing_pipeline/blob/main/ENCODE_processing_pipeline.png" width="850" height="163">
 </p>
 
 ## Dependencies
@@ -18,10 +18,18 @@ Here is the overview of the method:
 * SciPy 1.1.0 ([https://www.scipy.org](https://www.scipy.org))
 * Matplotlib 3.3.3 ([https://matplotlib.org/](https://matplotlib.org/))
 * Seaborn 0.11.0 ([https://seaborn.pydata.org/installing.html](https://seaborn.pydata.org/installing.html))
+* HOMER ([http://homer.ucsd.edu/homer/download.html](http://homer.ucsd.edu/homer/download.html))
 
 ## Quick Usage
 [identify_motif.py](https://github.com/zeyang-shen/spacing_pipeline/blob/main/scripts/identify_motif.py) can find motifs given a peak file, a FASTA file for peak sequences, and a motif file. The recommended parameters are as below to filter for motifs passing a false positive rate <0.1% (--cutoff) and a location <50 bp from peak centers (-d 50): 
 ```bash
+python identify_motif.py ../ENCODE_processed_files/CTCF_idr.fa CTCF --motif_path ../motifs/ --cutoff -d 50
+```
+
+To identify motifs and simultaneously separate peaks into those falling at repetitive DNA regions and nonrepetitive regions, please download the repeats annotations first and run identify_motif.py script by specifying "--repeat":
+
+```bash
+wget 
 python identify_motif.py ../ENCODE_processed_files/CTCF_idr.fa CTCF --motif_path ../motifs/ --cutoff -d 50
 ```
 
@@ -31,7 +39,7 @@ python characterize_spacing.py ../ENCODE_processed_files/ GATA1 TAL1 --motif_pat
 ```
 
 ## Citation
-If you use our findings or scripts, please cite our [biorxiv](https://doi.org/10.1101/2020.04.02.021535) paper.
+If you use our findings or scripts, please cite our [biorxiv](https://doi.org/10.1101/2020.04.02.021535) paper. The processed data of this paper based on ENCODE ChIP-seq data are included in the folder [ENCODE_processed_files](https://github.com/zeyang-shen/spacing_pipeline/tree/main/ENCODE_processed_files)
 
 ## Contact
 If you enconter a problem when using the scripts, you can

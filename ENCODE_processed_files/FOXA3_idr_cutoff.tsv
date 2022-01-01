@@ -1,4 +1,4 @@
-#PeakID(python scan_motif.py ./ENCODE_processed_files/FOXA3_idr.fa FOXA3 --motif_path ./motifs/ --distance 50  --cutoff --size 400)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
+#PeakID(python identify_motif.py ./ENCODE_processed_files/FOXA3_idr.fa FOXA3 --motif_path ./motifs/ --distance 50  --cutoff --size 400 --repeat ../hg38_repeats/hg38_repeats_merged.nodup.all.txt)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
 876_100	chr21	28589984	28590384	+	1000	412.5	[8.361351]	[102]	[]	[]	[28590180]	[]
 876_1000	chr17	65074785	65075185	+	1000	139.0	[8.264141, 12.570299]	[53, 82]	[]	[]	[65074936, 65074965]	[]
 876_10004	chr9	131090858	131091258	+	1000	42.0	[]	[]	[7.553737]	[147]	[]	[131091095]

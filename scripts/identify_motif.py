@@ -204,10 +204,9 @@ if __name__ == "__main__":
     parser.add_argument("-s", "--size", 
                         help="Re-scaled size of output peaks",
                         type=int, default=400)
-    parser.add_argument("-m", "--mask", 
-                        help="Masking type",
-                        type=str, default="none", 
-                        choices=["none", "all", "SINE", "LINE", "LTR", "low_complexity", "satellite", "simple_repeat", "DNA"])
+    parser.add_argument("--repeat", 
+                        help="Repeats annotation file",
+                        type=str)
     args = parser.parse_args()
     
     fasta_file = args.file
@@ -217,11 +216,11 @@ if __name__ == "__main__":
     keep_best = args.best
     score_cutoff = args.cutoff
     scale_size = args.size
-    mask_type = args.mask #HOMER is required if specified a value instead of "none"
+    repeat_file = args.repeat #HOMER is required if specified a value instead of "none"
     
     original_command = " ".join(["python identify_motif.py", fasta_file, tf, "--motif_path "+motif_path, 
                                  "--distance "+str(position_cutoff), "--best"*keep_best, "--cutoff"*score_cutoff, 
-                                 "--size "+str(scale_size), "--mask "+mask_type])
+                                 "--size "+str(scale_size), "--repeat "+repeat_file])
     
     #load motif PWMs
     motif_dict = load_motifs(motif_dir=motif_path)
@@ -247,9 +246,8 @@ if __name__ == "__main__":
     save_file, peak_df = filter_to_df(peak_file, seq_dict, motif_dict[motif_id], scale_size)
     
     #separate peaks in repetitive and nonrepetitive regions
-    if mask_type != "none":
-        print('Generating masked file...')
-        repeat_file = "./hg38_repeats/hg38_repeats_merged.nodup."+mask_type+".txt"
+    if repeat_file != None:
+        print('Checking repetitive regions...')
         mask_merge_file = save_file.replace('.tsv', '_repeatMerged.tsv')
         cmd="mergePeaks -d given "+save_file+" "+repeat_file+" > " +mask_merge_file #HOMER is required
         os.system(cmd)

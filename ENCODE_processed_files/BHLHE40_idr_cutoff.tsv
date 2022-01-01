@@ -1,4 +1,4 @@
-#PeakID(python scan_motif.py ./ENCODE_processed_files/BHLHE40_idr.fa BHLHE40 --motif_path ./motifs/ --distance 50  --cutoff --size 400)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
+#PeakID(python identify_motif.py ./ENCODE_processed_files/BHLHE40_idr.fa BHLHE40 --motif_path ./motifs/ --distance 50  --cutoff --size 400 --repeat ../hg38_repeats/hg38_repeats_merged.nodup.all.txt)	chr	start	end	strand	idrScore	count	motif score +	motif position +	motif score -	motif position -	adjusted motif position +	adjusted motif position -
 890_100	chr1	171485235	171485635	+	1000	618.0	[13.478247]	[102]	[13.478247]	[102]	[171485433]	[171485433]
 890_10000	chr20	63540323	63540723	+	1000	89.0	[8.113682]	[83]	[8.113682]	[83]	[63540475]	[63540475]
 890_10002	chr22	21569751	21570151	+	1000	89.0	[9.876531]	[110]	[11.247076]	[110]	[21569939]	[21569939]
