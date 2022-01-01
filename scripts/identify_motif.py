@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import sys
 import os
+sys.path.append(os.path.dirname(__file__)+'/../')
 from Bio import motifs, SeqIO, Seq #biopython package
 import argparse
 
@@ -177,6 +178,8 @@ def filter_to_df(peak_file, seq_dict, bio_motif, size):
     peak_df.to_csv(output_file, sep='\t')
     print('Total valid peaks:', len(peak_df), 'out of', len(seq_dict))
     
+    return output_file, peak_df
+    
 if __name__ == "__main__":
         
     parser = argparse.ArgumentParser(description='Scan for motifs; Example: python identify_motif.py ../ENCODE_processed_files/CTCF_idr.fa CTCF --motif_path ../motifs/ --cutoff -d 50')
@@ -188,7 +191,7 @@ if __name__ == "__main__":
                         type=str)
     parser.add_argument("--motif_path", 
                         help="path to motif files",
-                        type=str)
+                        type=str, default="./motifs/")
     parser.add_argument("-d", "--distance", 
                         help="distance cutoff to peak center",
                         type=int)
@@ -201,6 +204,10 @@ if __name__ == "__main__":
     parser.add_argument("-s", "--size", 
                         help="Re-scaled size of output peaks",
                         type=int, default=400)
+    parser.add_argument("-m", "--mask", 
+                        help="Masking type",
+                        type=str, default="none", 
+                        choices=["none", "all", "SINE", "LINE", "LTR", "low_complexity", "satellite", "simple_repeat", "DNA"])
     args = parser.parse_args()
     
     fasta_file = args.file
@@ -210,10 +217,11 @@ if __name__ == "__main__":
     keep_best = args.best
     score_cutoff = args.cutoff
     scale_size = args.size
+    mask_type = args.mask #HOMER is required if specified a value instead of "none"
     
     original_command = " ".join(["python identify_motif.py", fasta_file, tf, "--motif_path "+motif_path, 
                                  "--distance "+str(position_cutoff), "--best"*keep_best, "--cutoff"*score_cutoff, 
-                                 "--size "+str(scale_size)])
+                                 "--size "+str(scale_size), "--mask "+mask_type])
     
     #load motif PWMs
     motif_dict = load_motifs(motif_dir=motif_path)
@@ -236,5 +244,23 @@ if __name__ == "__main__":
     peak_file = fasta_file.replace(".fa",".tsv")
     
     #scan for motifs
-    filter_to_df(peak_file, seq_dict, motif_dict[motif_id], scale_size)
+    save_file, peak_df = filter_to_df(peak_file, seq_dict, motif_dict[motif_id], scale_size)
     
+    #separate peaks in repetitive and nonrepetitive regions
+    if mask_type != "none":
+        print('Generating masked file...')
+        repeat_file = "./hg38_repeats/hg38_repeats_merged.nodup."+mask_type+".txt"
+        mask_merge_file = save_file.replace('.tsv', '_repeatMerged.tsv')
+        cmd="mergePeaks -d given "+save_file+" "+repeat_file+" > " +mask_merge_file #HOMER is required
+        os.system(cmd)
+
+        merge_df = pd.read_csv(mask_merge_file, sep='\t', index_col=0, low_memory=False)
+        mask_merge_peak = merge_df.iloc[:,-2][np.all([merge_df.iloc[:,-2].notnull(), merge_df.iloc[:,-1].isnull()], axis=0)]
+        mask_peak_idx = np.unique([j for i in mask_merge_peak for j in i.split(',')])
+        peak_df.loc[mask_peak_idx].to_csv(save_file.replace('.tsv', '_masked.tsv'), sep='\t')
+        print('Total peaks outside specified regions:', len(mask_peak_idx))
+
+        mask_merge_peak = merge_df.iloc[:,-2][np.all([merge_df.iloc[:,-2].notnull(), merge_df.iloc[:,-1].notnull()], axis=0)]
+        mask_peak_idx = np.unique([j for i in mask_merge_peak for j in i.split(',')])
+        peak_df.loc[mask_peak_idx].to_csv(save_file.replace('.tsv', '_inmask.tsv'), sep='\t')
+        print('Total peaks in specified regions:', len(mask_peak_idx))
