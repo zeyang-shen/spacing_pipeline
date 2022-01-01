@@ -26,20 +26,31 @@ Here is the overview of the method:
 python identify_motif.py ../ENCODE_processed_files/CTCF_idr.fa CTCF --motif_path ../motifs/ --cutoff -d 50
 ```
 
-To identify motifs and simultaneously separate peaks into those falling at repetitive DNA regions and nonrepetitive regions, please download the repeats annotations first and run identify_motif.py script by specifying "--repeat":
+To identify motifs and simultaneously separate peaks into those falling at **repetitive** and nonrepetitive DNA regions, please download the repeats annotations first and run `identify_motif.py` script by specifying `--repeat`:
 
 ```bash
-wget 
-python identify_motif.py ../ENCODE_processed_files/CTCF_idr.fa CTCF --motif_path ../motifs/ --cutoff -d 50
+wget https://homer.ucsd.edu/zeyang/hg38_repeats.tar.gz
+tar -zxvf hg38_repeats.tar.gz
+python identify_motif.py ../ENCODE_processed_files/CTCF_idr.fa CTCF --motif_path ../motifs/ --cutoff -d 50 --repeat hg38_repeats/hg38_repeats_merged.nodup.all.txt
 ```
 
-[characterize_spacing.py](https://github.com/zeyang-shen/spacing_pipeline/blob/main/scripts/characterize_spacing.py) can take in two processed files from identify_motif.py for a pair of transcription factors and output results of spacing relationships. The basic usage is as below:
+[characterize_spacing.py](https://github.com/zeyang-shen/spacing_pipeline/blob/main/scripts/characterize_spacing.py) can take in two processed files from `identify_motif.py` for a pair of transcription factors and output results of spacing relationships. The basic usage is as below:
 ```bash
 python characterize_spacing.py ../ENCODE_processed_files/ GATA1 TAL1 --motif_path ../motifs/
 ```
 
 ## Citation
-If you use our findings or scripts, please cite our [biorxiv](https://doi.org/10.1101/2020.04.02.021535) paper. The processed data of this paper based on ENCODE ChIP-seq data are included in the folder [ENCODE_processed_files](https://github.com/zeyang-shen/spacing_pipeline/tree/main/ENCODE_processed_files)
+If you use our findings or scripts, please cite our [biorxiv](https://doi.org/10.1101/2020.04.02.021535) paper.
+
+## Data
+`motifs/` folder stores the PWM files in the JASPAR format used in the paper.
+
+`ENCODE_processed_files/` folder includes the processed data of this paper based on ENCODE ChIP-seq data:
+* _idr.tsv -- ChIP-seq peaks in HOMER peak file format after running IDR
+* _idr.fa -- sequences of ChIP-seq peaks in _idr.tsv
+* _idr_cutoff.tsv -- ChIP-seq peaks that have been identified to have valid motifs
+* _idr_cutoff_inmask.tsv -- Peaks in _idr_cutoff.tsv that fall into repetitive regions
+* _idr_cutoff_masked.tsv -- Peaks in _idr_cutoff.tsv that fall into nonrepetitive regions
 
 ## Contact
 If you enconter a problem when using the scripts, you can
