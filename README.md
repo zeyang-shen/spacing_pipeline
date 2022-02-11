@@ -40,7 +40,7 @@ python characterize_spacing.py ../ENCODE_processed_files/ GATA1 TAL1 --motif_pat
 ```
 
 ## Citation
-If you use our findings or scripts, please cite our [biorxiv](https://doi.org/10.1101/2020.04.02.021535) paper.
+If you use our findings or scripts, please cite our paper: [https://doi.org/10.7554/eLife.70878](https://doi.org/10.7554/eLife.70878).
 
 ## Data
 `motifs/` folder stores the PWM files in the JASPAR format used in the paper.
