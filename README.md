@@ -1,5 +1,5 @@
 [![python-version](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/release/python-360/)
-[![DOI](https://zenodo.org/badge/DOI/10.1101/2020.04.02.021535.svg)](https://www.biorxiv.org/content/10.1101/2020.04.02.021535v1.full)
+[![DOI](https://zenodo.org/badge/DOI/10.7554/eLife.70878.svg)](https://doi.org/10.7554/eLife.70878)
 
 # Spacing pipeline
 The scripts provided in this repository are used to compute and characterize the spacing relationships of transcription factors. 
